@@ -747,10 +747,13 @@ Transform:
 <<<<<<< HEAD
   m_Father: {fileID: 336977278}
   m_RootOrder: -1
+<<<<<<< HEAD
 =======
   m_Father: {fileID: 0}
   m_RootOrder: 8
 >>>>>>> parent of 076a85c (walls)
+=======
+>>>>>>> parent of bf8211d (Update Minigame.unity)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618753186
 GameObject:
@@ -1737,7 +1740,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189272938}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &1262075108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,8 +1838,11 @@ Transform:
   m_Father: {fileID: 336977278}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 076a85c (walls)
+=======
+>>>>>>> parent of bf8211d (Update Minigame.unity)
 --- !u!1 &1398596007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,7 +2440,6 @@ MonoBehaviour:
   speed: 10
   countText: {fileID: 1189272940}
   winTextObject: {fileID: 1091573662}
-<<<<<<< HEAD
 --- !u!1 &1931191588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,8 +2538,11 @@ Transform:
   m_Father: {fileID: 336977278}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 076a85c (walls)
+=======
+>>>>>>> parent of bf8211d (Update Minigame.unity)
 --- !u!1 &2071404887
 GameObject:
   m_ObjectHideFlags: 0
