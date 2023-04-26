@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2429538424415432703}
   m_Layer: 0
   m_Name: Star
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.65, z: 0.65}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5535982282705516149
 GameObject:
