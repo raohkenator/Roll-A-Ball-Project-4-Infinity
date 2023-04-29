@@ -7,20 +7,31 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 
 {
-    public float speed = 0;
+    public float speed = 10;
+    public TextMeshProUGUI levelText;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public int level = 0;
 
     private Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
+
+    void ResetGame()
+    {
+        speed = 10;
+        count = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        level = 1;
 
+        SetLeveltext();
         SetCountText();
         winTextObject.SetActive(false);
     }
@@ -30,15 +41,6 @@ public class PlayerController : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
-    }
-
-    void SetCountText()
-    {
-        countText.text = "Count: " + count.ToString();
-        if(count >= 2)
-        {
-            winTextObject.SetActive(true);
-        }
     }
 
     void FixedUpdate()
@@ -56,4 +58,19 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
     }
+
+    void SetCountText()
+    {
+        countText.text = "Count: " + count.ToString();
+        if(count >= 2)
+        {
+            winTextObject.SetActive(true);
+        }
+    }
+
+    void SetLeveltext()
+    {
+        levelText.text = "Level " + level.ToString();
+    }
+
 }
