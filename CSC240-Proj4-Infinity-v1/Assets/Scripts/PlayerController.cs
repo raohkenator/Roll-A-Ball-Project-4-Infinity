@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private GameObject Door2;
 
     private Rigidbody rb;
-    private int count;
+    public int count;
     private float movementX;
     private float movementY;
 
@@ -69,6 +69,14 @@ public class PlayerController : MonoBehaviour
             updateText.text = "You hear a door open.";
             updateTextObject.SetActive(true);
             Door1.GetComponent<DoorOpenClose>().Open = true;
+            Invoke("HideUpdate", 7.0f);
+        }
+        if (count >= 6 && level == 2 && !Door2.GetComponent<DoorOpenClose>().Open)
+        {
+            updateText.text = "You hear a door open.";
+            updateTextObject.SetActive(true);
+            Door2.GetComponent<DoorOpenClose>().Open = true;
+            Invoke("HideUpdate", 7.0f);
         }
         if(count >= 8 && level == 2)
         {
@@ -112,5 +120,10 @@ public class PlayerController : MonoBehaviour
     void SetLeveltext()
     {
         levelText.text = "Level " + level.ToString();
+    }
+
+    void HideUpdate()
+    {
+        updateTextObject.SetActive(false);
     }
 }

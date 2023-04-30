@@ -1175,6 +1175,7 @@ MonoBehaviour:
   winTextObject: {fileID: 1891780967}
   speed: 10
   level: 0
+  count: 0
 --- !u!1001 &178586768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6666,6 +6667,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830031262}
   m_CullTransparentMesh: 1
+--- !u!1 &852443008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3942887416445567750, guid: da2e33c9663ef4d51a0e22ef87fe64f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 666906145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &852443009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852443008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c34b56cfa8f98f4385b3dd791c5e28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Open: 0
 --- !u!1001 &869638567
 PrefabInstance:
   m_ObjectHideFlags: 0
