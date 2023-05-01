@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     private IEnumerator GameWinCo;
+    private IEnumerator DeathCo;
+    private bool Fallen = false;
 
     void Start()
     {
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
         count = 0;
         level = 1;
         GameWinCo = GameWin(CountDown);
+        DeathCo = Respawn(CountDown);
 
         // displays appropriate texts
         SetLeveltext();
@@ -64,6 +68,11 @@ public class PlayerController : MonoBehaviour
         winTextObject.SetActive(false);
         deathTextObject.SetActive(false);
         updateTextObject.SetActive(false);
+    }
+
+    void Reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void OnMove(InputValue movementValue)
@@ -97,6 +106,11 @@ public class PlayerController : MonoBehaviour
             updateTextObject.SetActive(true);
             Invoke("HideUpdate", 4.0f);
         }
+        if(gameObject.transform.position.y <= -50 && !Fallen)
+        {
+            Fallen = true;
+            Death(3)
+;        }
         
     }
 
@@ -132,15 +146,19 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Works");
             }
         }
+        if(other.gameObject.CompareTag("Laser"))
+        {
+            Death(1);
+        }
+        if(other.gameObject.CompareTag("Mine"))
+        {
+            Death(2);
+        }
     }
 
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if(count >= 2)
-        {
-            winTextObject.SetActive(true);
-        }
     }
 
     void SetLeveltext()
@@ -156,8 +174,12 @@ public class PlayerController : MonoBehaviour
     void Win()
     {
         Debug.Log("Win Condition Met");
-        transform.position = new Vector3(0, 50, -120);
+        rb.velocity = new Vector3(0, 0, 0);
+        rb.freezeRotation = true;
+        transform.position = new Vector3(0, 51, -120);
+        winTextObject.SetActive(true);
     }
+
     public IEnumerator GameWin(float CountDown)
     {
         for(float Timer = CountDown; Timer > 0; Timer--)
@@ -171,5 +193,49 @@ public class PlayerController : MonoBehaviour
         
         updateTextObject.SetActive(false);
         Win();
+    }
+
+    void Death(int Cause = 0) // 0 = Default/Invalid Death, 1 = Laser, 2 = Mine, 3 = Void.
+    {
+        if(Cause == 1)
+        {
+            rb.freezeRotation = true;
+            speed = 0;
+            deathText.text = "You Got Hit By A Laser! \n [You Lost]";
+            deathTextObject.SetActive(true);
+            StartCoroutine(DeathCo);
+        }
+        if(Cause == 2)
+        {
+            rb.freezeRotation = true;
+            speed = 0;
+            deathText.text = "You Set Off A Mine! \n [You Lost]";
+            deathTextObject.SetActive(true);
+            StartCoroutine(DeathCo);
+        }
+        if(Cause == 3)
+        {
+            rb.freezeRotation = true;
+            speed = 0;
+            deathText.text = "You Fell Into Space! \n [You Lost]";
+            deathTextObject.SetActive(true);
+            StartCoroutine(DeathCo);
+        }
+    }
+
+    public IEnumerator Respawn(float CountDown)
+    {
+        for(float Timer = CountDown; Timer > 0; Timer--)
+        {
+            updateText.text = "You Will Respawn In: " + CountDown.ToString();
+            updateTextObject.SetActive(true);
+            CountDown -= 1.0f;
+            Debug.Log($"{CountDown}");
+            yield return new WaitForSeconds(1.0f);
+        }
+        
+        updateTextObject.SetActive(false);
+        deathTextObject.SetActive(false);
+        Reset();
     }
 }
