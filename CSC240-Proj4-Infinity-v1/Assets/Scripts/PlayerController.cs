@@ -92,14 +92,14 @@ public class PlayerController : MonoBehaviour
             Door1.GetComponent<DoorOpenClose>().Open = true;
             Invoke("HideUpdate", 7.0f);
         }
-        if (count >= 6 && level == 2 && !Door2.GetComponent<DoorOpenClose>().Open)
+        if (count >= 7 && level == 2 && !Door2.GetComponent<DoorOpenClose>().Open)
         {
             updateText.text = "You hear a door open.";
             updateTextObject.SetActive(true);
             Door2.GetComponent<DoorOpenClose>().Open = true;
             Invoke("HideUpdate", 7.0f);
         }
-        if(count >= 8 && level == 2 && !level2Complete)
+        if(count >= 9 && level == 2 && !level2Complete)
         {
             level2Complete = true;
             updateText.text = "You think you have collected enough stars! Take them to the refueling bucket.";
